@@ -1,27 +1,23 @@
-# 📨 Daily Attendance Email Automation
-This project automates the process of sending daily attendance reports via Microsoft Outlook. Built using Python, it utilizes the pywin32 library to interface with Outlook and handles date adjustments to send the correct report from the previous workday.
+# Daily Attendance Email Automation
 
-# 📌 Features
-Automatically determines the correct attendance date (adjusted for weekends).
-Uses the Outlook COM interface to generate and send emails.
-Customizes email content based on the adjusted date.
-Can be scheduled as a daily task via Windows Task Scheduler.
+Python example for sending a dated attendance report email through Microsoft Outlook on Windows.
 
-# Libraries Used
-win32com.client (from pywin32) — for Outlook automation
-datetime — for date manipulation
-pythoncom — to initialize COM threading
-os — for any file path handling (if included)
+## What it does
 
-# 🎯 Goals
-Automate the process of sending daily attendance emails without manual intervention.
-Reduce the possibility of human error when selecting dates or formatting messages.
-Ensure timely communication of attendance data to relevant stakeholders.
-Create a reusable and adaptable solution that can work with Microsoft Outlook.
+Calculates the previous reporting date, prepares an HTML email, adds a local attachment and sends it through Outlook. On Monday, the date helper selects the previous Friday. Other days select the preceding calendar day.
 
-# 🌟 Benefits
-Time-Saving: Eliminates the need for daily manual email preparation.
-Accuracy: Automatically selects the correct date and formats it properly, even after weekends.
-Consistency: Standardizes the email format and ensures it is sent on time every day.
-Scalability: Can be easily extended to include attachments, integrate with databases, or support more recipients.
-Easy Integration: Works seamlessly with Outlook using the pywin32 library.
+## Files and setup
+
+- `Daily_Email ATTD.ipynb`: notebook example.
+- `.env.example`: local configuration names with non-working example values.
+- `.gitignore`: excludes local configuration, report data and outputs.
+
+Use Windows, a configured Outlook desktop installation, Python, Jupyter and pywin32. Set `ATTENDANCE_RECIPIENT`, `ATTENDANCE_DASHBOARD_URL` and `ATTENDANCE_ATTACHMENT_PATH` in the local process environment. The example file is not loaded automatically.
+
+## Safety
+
+Running the notebook sends email, not a draft. Review the recipient, dashboard link, attachment and reporting date before execution. Use synthetic data and a test mailbox first. Do not run it against a real recipient merely to preview the example.
+
+## Limitations
+
+The date rule does not account for public holidays or all workweek patterns. No scheduler configuration is included. The notebook uses a local file and Outlook COM, so it is not cross-platform. No measured time-saving claim is made. This update has been statically checked, not executed against Outlook.
