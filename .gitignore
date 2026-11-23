@@ -1,0 +1,11 @@
+.env
+.env.*
+!.env.example
+.ipynb_checkpoints/
+__pycache__/
+*.csv
+*.xlsx
+*.xls
+*.log
+*error*.png
+service_account*.json
